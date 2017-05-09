@@ -5,5 +5,6 @@ authors = ["Mahmoud Al-Qudsi <mqudsi@neosmart.net>"]
 
 [dependencies]
 getopts = "0.2"
+glob = "0.2.11"
 zip = "0.2"
 
