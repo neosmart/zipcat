@@ -92,11 +92,8 @@ fn include_file(path: &str, includes: &Vec<Pattern>, excludes: &Vec<Pattern>) ->
         require_literal_leading_dot: false,
     };
 
-    if includes.len() == 0 {
-        return !excludes.iter().any(|p| p.matches_with(path, &options));
-    }
-
-    return includes.iter().any(|p| p.matches_with(path, &options)) &&
+    //either (no include filter or matching include filter) + no matching exclude filter
+    return (includes.len() == 0 || includes.iter().any(|p| p.matches_with(path, &options))) &&
            !excludes.iter().any(|p| p.matches_with(path, &options));
 }
 
