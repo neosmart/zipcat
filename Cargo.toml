@@ -2,9 +2,15 @@
 name = "zipcat"
 version = "0.1.0"
 authors = ["Mahmoud Al-Qudsi <mqudsi@neosmart.net>"]
+description = "Pipe content of compressed file(s) within a zip archive to stdout."
+homepage = "https://github.com/neosmart/zipcat"
+repository = "https://github.com/neosmart/zipcat"
+readme = "README.md"
+keywords = ["zip, zipcat, zcat, compression"]
+categories = ["command-line-utilities", "text-processing", "compression"]
+license = "MIT"
 
 [dependencies]
 getopts = "0.2"
 glob = "0.2.11"
 zip = "0.2"
-
