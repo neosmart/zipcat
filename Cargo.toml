@@ -6,7 +6,7 @@ description = "Pipe content of compressed file(s) within a zip archive to stdout
 homepage = "https://github.com/neosmart/zipcat"
 repository = "https://github.com/neosmart/zipcat"
 readme = "README.md"
-keywords = ["zip, zipcat, zcat, compression"]
+keywords = ["zip","zipcat", "zcat", "compression"]
 categories = ["command-line-utilities", "text-processing", "compression"]
 license = "MIT"
 
