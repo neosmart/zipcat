@@ -29,8 +29,17 @@ fn main() {
 
     let matches = match opts.parse(&args[1..]) {
         Ok(m) => m,
-        Err(f) => panic!(f.to_string()),
+        Err(e) => {
+            print!("{}\n", e);
+            print_usage(&program, opts, false);
+            return;
+        }
     };
+
+    if matches.opt_present("h") {
+        print_usage(&program, opts, true);
+        return;
+    }
 
     let parsed = ParsedOptions {
         suppress_file_names: matches.opt_present("s"),
@@ -39,7 +48,7 @@ fn main() {
     };
 
     if matches.free.is_empty() {
-        print_usage(&program, opts);
+        print_usage(&program, opts, false);
         return;
     }
 
@@ -55,9 +64,18 @@ fn main() {
     }
 }
 
-fn print_usage(program: &str, opts: Options) {
-    println!("Usage: {} ZIPFILE [options]", program);
+fn print_usage(program: &str, opts: Options, include_copyright: bool) {
+    use std::path::PathBuf;
+    let path = PathBuf::from(program);
+    let command = path.file_name().unwrap().to_string_lossy();
+
+    let copyright = "zipcat 0.1 by NeoSmart Technologies. Written by Mahmoud Al-Qudsi \
+                     <mqudsi@neosmart.net>";
+    println!("Usage: {} ZIPFILE [options]", command);
     print!("Pipes content of compressed file(s) within a zip archive to stdout");
+    if include_copyright {
+        print!("\n{}", copyright);
+    }
     print!("{}", opts.usage(""));
 }
 
